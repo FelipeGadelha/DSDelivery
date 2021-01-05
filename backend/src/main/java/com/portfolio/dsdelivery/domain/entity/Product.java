@@ -114,6 +114,15 @@ public class Product implements Serializable {
 			return false;
 		return true;
 	}
+
+	@Override
+	public String toString() {
+		return "Product [id=" + id + "," + System.lineSeparator() +
+				"name=" + name + "," + System.lineSeparator() +
+				"price=" + price + "," + System.lineSeparator() +
+				"description=" + description + "," + System.lineSeparator() +
+				"imageUri=" + imageUri + "]";
+	}
 	
 	
 

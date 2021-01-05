@@ -6,66 +6,48 @@ public class ProductRq implements Serializable{
 	
 	private static final long serialVersionUID = 1L;
 	
-	private final String name;
-	private final Double price;
-	private final String description;
-	private final String imageUri;
-	
-	public static class Builder {
-
-		private String name;
-		private Double price;
-		private String description;
-		private String imageUri;
-
-		public Builder() {
-		}
-
-		public Builder name(String name) {
-			this.name = name;
-			return this;
-		}
-
-		public Builder price(Double price) {
-			this.price = price;
-			return this;
-		}
-		
-		public Builder description(String description) {
-			this.description = description;
-			return this;
-		}
-		
-		public Builder imageUri(String imageUri) {
-			this.imageUri = imageUri;
-			return this;
-		}
-		
-		public ProductRq build() {
-			return new ProductRq(this);
-		}
-	}
-
-	private ProductRq(Builder builder) {
-		this.name = builder.name;
-		this.price = builder.price;
-		this.description = builder.description;
-		this.imageUri = builder.imageUri;
-	}
+	private String name;
+	private Double price;
+	private String description;
+	private String imageUri;
 
 	public String getName() {
 		return name;
+	}
+	
+	public void setName(String name) {
+		this.name = name;
 	}
 
 	public Double getPrice() {
 		return price;
 	}
+	
+	public void setPrice(Double price) {
+		this.price = price;
+	}
 
 	public String getDescription() {
 		return description;
+	}
+	
+	public void setDescription(String description) {
+		this.description = description;
 	}
 
 	public String getImageUri() {
 		return imageUri;
 	}
+	
+	public void setImageUri(String imageUri) {
+		this.imageUri = imageUri;
+	}
+
+	@Override
+	public String toString() {
+		return "ProductRq [name=" + name + ", price=" + price + ", description=" + description + ", imageUri="
+				+ imageUri + "]";
+	}
+	
+	
 }

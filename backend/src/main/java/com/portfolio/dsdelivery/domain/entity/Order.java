@@ -6,6 +6,8 @@ import java.util.HashSet;
 import java.util.Set;
 
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -28,6 +30,7 @@ public class Order implements Serializable {
 	private Double latitude;
 	private Double longitude;
 	private Instant moment;
+	@Enumerated(EnumType.STRING)
 	private OrderStatus status;
 	
 	@ManyToMany
@@ -98,25 +101,48 @@ public class Order implements Serializable {
 	public String getAddress() {
 		return address;
 	}
+	public void setAddress(String address) {
+		this.address = address;
+	}
 
 	public Double getLatitude() {
 		return latitude;
+	}
+	
+	public void setLatitude(Double latitude) {
+		this.latitude = latitude;
 	}
 
 	public Double getLongitude() {
 		return longitude;
 	}
-
+	
+	public void setLongitude(Double longitude) {
+		this.longitude = longitude;
+	}
+	
 	public Instant getMoment() {
 		return moment;
+	}
+
+	public void setMoment(Instant moment) {
+		this.moment = moment;
 	}
 
 	public OrderStatus getStatus() {
 		return status;
 	}
+	
+	public void setStatus(OrderStatus status) {
+		this.status = status;
+	}
 
 	public Set<Product> getProducts() {
 		return products;
+	}
+	
+	public void setProducts(Set<Product> products) {
+		this.products = products;
 	}
 
 	@Override
@@ -143,6 +169,19 @@ public class Order implements Serializable {
 			return false;
 		return true;
 	}
+
+	@Override
+	public String toString() {
+		return "Order [id=" + id + "," + System.lineSeparator() +
+				"address=" + address + "," + System.lineSeparator() +
+				"latitude=" + latitude + "," + System.lineSeparator() +
+				"longitude=" + longitude + "," + System.lineSeparator() +
+				"moment=" + moment + "," + System.lineSeparator() +
+				"status=" + status + "," + System.lineSeparator() +
+				"products=" + products + "]";
+	}
+	
+	
 	
 	
 	

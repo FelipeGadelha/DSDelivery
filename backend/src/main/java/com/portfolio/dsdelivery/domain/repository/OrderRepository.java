@@ -12,7 +12,7 @@ import com.portfolio.dsdelivery.domain.entity.Order;
 public interface OrderRepository extends JpaRepository<Order, Long>{
 	
 	@Query("SELECT DISTINCT o FROM Order o JOIN FETCH o.products "
-			+ "WHERE o.status = 0 ORDER BY o.moment ASC")
+			+ "WHERE o.status = 'PENDING' ORDER BY o.moment ASC")
 	List<Order> findOrdersWithProducts();
 	
 }
