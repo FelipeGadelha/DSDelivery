@@ -44,22 +44,29 @@ public class OrderService {
 	
 	@Transactional
 	public OrderRs save(OrderRq orderRq) {
-		Order order = orderRqForOrder(orderRq);
+		Order order = toEntity(orderRq);
 		order.setMoment(Instant.now());
 		order.setStatus(OrderStatus.PENDING);
 		Set<Product> products = new HashSet<>();
 		orderRq.getProducts().stream().forEach(p -> products.add(productRepository.getOne(p.getId())));
 		order.setProducts(products);
 		Order save = orderRepository.save(order);
-		return orderForOrderRs(save);
+		return toResponse(save);
 		
 	}
 	
-	private Order orderRqForOrder(OrderRq orderRq) {
+	@Transactional
+	public OrderRs delivered(Long id) {
+		Order order = orderRepository.getOne(id);
+		order.setStatus(OrderStatus.DELIVERED);
+		return toResponse(orderRepository.save(order));
+	}
+	
+	private Order toEntity(OrderRq orderRq) {
 		return mapper.map(orderRq, Order.class);
 	}
 	
-	private OrderRs orderForOrderRs(Order order) {
+	private OrderRs toResponse(Order order) {
 		return mapper.map(order, OrderRs.class);
 	}	
 }
