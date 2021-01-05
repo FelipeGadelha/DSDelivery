@@ -1,4 +1,4 @@
-package com.portfolio.dsdelivery.config;
+package com.portfolio.dsdelivery.api.config;
 
 import java.util.Arrays;
 

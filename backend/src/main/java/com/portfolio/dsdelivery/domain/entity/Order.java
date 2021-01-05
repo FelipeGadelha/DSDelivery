@@ -22,19 +22,32 @@ public class Order implements Serializable {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private final Long id;
+	private Long id;
 	
-	private final String address;
-	private final Double latitude;
-	private final Double longitude;
-	private final Instant moment;
-	private final OrderStatus status;
+	private String address;
+	private Double latitude;
+	private Double longitude;
+	private Instant moment;
+	private OrderStatus status;
 	
 	@ManyToMany
 	@JoinTable(name = "tb_order_product",
 			joinColumns = @JoinColumn(name = "order_id"),
 			inverseJoinColumns = @JoinColumn(name = "product_id"))
-	private final Set<Product> products = new HashSet<>();
+	private Set<Product> products = new HashSet<>();
+	
+	@Deprecated
+	public Order() {
+	}
+	
+	private Order(Builder builder) {
+		this.id = null;
+		this.address = builder.address;
+		this.latitude = builder.latitude;
+		this.longitude = builder.longitude;
+		this.moment = builder.moment;
+		this.status = builder.status;
+	}
 	
 	public static class Builder {
 
@@ -76,15 +89,6 @@ public class Order implements Serializable {
 		public Order build() {
 			return new Order(this);
 		}
-	}
-
-	private Order(Builder builder) {
-		this.id = null;
-		this.address = builder.address;
-		this.latitude = builder.latitude;
-		this.longitude = builder.longitude;
-		this.moment = builder.moment;
-		this.status = builder.status;
 	}
 
 	public Long getId() {

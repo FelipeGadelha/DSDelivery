@@ -16,13 +16,17 @@ public class Product implements Serializable {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private final Long id;
+	private Long id;
 	
-	private final String name;
-	private final Double price;
-	private final String description;
-	private final String imageUri;
-
+	private String name;
+	private Double price;
+	private String description;
+	private String imageUri;
+	
+	@Deprecated
+	public Product() {
+	}
+	
 	public static class Builder {
 
 		private String name;
@@ -57,7 +61,7 @@ public class Product implements Serializable {
 			return new Product(this);
 		}
 	}
-
+	
 	private Product(Builder builder) {
 		this.id = null;
 		this.name = builder.name;
