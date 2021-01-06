@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import {ReactComponent as Logo } from '../../assets/logo.svg';
 
 import './styles.css';
@@ -6,10 +7,10 @@ import './styles.css';
 const Navbar: React.FC = () => {
   return (
     <nav className="main-navbar">
-        <a href="home" className="content-logo">
+        <Link to="/" className="content-logo">
             <Logo className="logo"/>
             DS Delivery
-        </a>
+        </Link>
         
     </nav>
   );
