@@ -1,17 +1,27 @@
 import React from 'react';
+import { checkIsSeleted } from './helpers';
 import ProductCard from './ProductCard';
 import { Product } from './types';
 
 interface ProductsListProps {
   products: Product[];
+  selectedProducts: Product[];
+  onSelectProduct: (product: Product) => void;
 }
 
-const ProductsList = (Props: ProductsListProps) => {
+const ProductsList = ({ products, selectedProducts, onSelectProduct }: ProductsListProps) => {
   return (
-      <div className="orders-list-container">
+      <div 
+        className="orders-list-container"
+      >
           <div className="orders-list-items">
-           {Props.products.map(product => (
-             <ProductCard key={product.id} product={ product }/>
+           {products.map(product => (
+             <ProductCard 
+              key={product.id} 
+              product={ product }
+              onSelectProduct={onSelectProduct}
+              isSelected={checkIsSeleted(selectedProducts, product)}
+            />
            ))}
           </div>
       </div>
