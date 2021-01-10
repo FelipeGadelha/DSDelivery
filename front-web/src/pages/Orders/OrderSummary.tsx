@@ -1,5 +1,4 @@
 import React from 'react';
-import { defaultProps } from 'react-select/src/Select';
 import { formatPrice } from './helpers';
 
 interface OrderSummaryProps {
