@@ -3,7 +3,10 @@ package com.portfolio.dsdelivery.domain.entity;
 import java.io.Serializable;
 import java.time.Instant;
 import java.util.HashSet;
+import java.util.List;
+import java.util.Optional;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
@@ -135,6 +138,11 @@ public class Order implements Serializable {
 	
 	public void setStatus(OrderStatus status) {
 		this.status = status;
+	}
+	
+	public Double getTotal() {
+//		return products.stream().map(p -> p.getPrice()).collect(Collectors.toList()).stream().reduce((n1, n2) -> n1 + n2).get();
+		return products.stream().map(p -> p.getPrice()).reduce((n1, n2) -> n1 + n2).get();
 	}
 
 	public Set<Product> getProducts() {
