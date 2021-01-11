@@ -7,8 +7,8 @@ import './styles.css';
 import { orderLocationData } from './types';
 
 const initialPosition = {
-    lat: -23.4953698, 
-    lng: -46.5644216
+    lat: -23.4886885, 
+    lng: -46.5709425
 }
 
 type Place = {
@@ -74,7 +74,7 @@ const OrderLocation = ({ onChangeLocation }: Props) => {
                 </div>
                 <MapContainer 
                     center={address.position} 
-                    zoom={16}
+                    zoom={17}
                     key={address.position.lat} 
                     scrollWheelZoom>
 
