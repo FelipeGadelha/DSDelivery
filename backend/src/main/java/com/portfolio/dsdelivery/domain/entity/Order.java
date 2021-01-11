@@ -142,7 +142,9 @@ public class Order implements Serializable {
 	
 	public Double getTotal() {
 //		return products.stream().map(p -> p.getPrice()).collect(Collectors.toList()).stream().reduce((n1, n2) -> n1 + n2).get();
-		return products.stream().map(p -> p.getPrice()).reduce((n1, n2) -> n1 + n2).get();
+		return products.stream()
+				.map(p -> p.getPrice())
+				.reduce(Double.POSITIVE_INFINITY, (n1, n2) -> n1 + n2);
 	}
 
 	public Set<Product> getProducts() {
