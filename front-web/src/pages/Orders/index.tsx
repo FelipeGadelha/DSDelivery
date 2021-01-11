@@ -3,7 +3,6 @@ import React, { useEffect, useState } from 'react';
 import OrderLocation from './OrderLocation';
 import ProductsList from './ProductsList';
 import StepsHeader from './StepsHeader';
-import { orderLocationData, Product } from './types';
 import { toast } from 'react-toastify';
 import fetchProducts, { saveOrder } from '../../service/api';
 
@@ -11,13 +10,14 @@ import './styles.css';
 import OrderSummary from './OrderSummary';
 import Footer from '../../components/Footer';
 import { checkIsSeleted } from './helpers';
+import { OrderLocationData, Product } from '../../service/types';
 
 
 
 const Orders: React.FC = () => {
     const [products, setProducts] = useState<Product[]>([]);
     const [selectedProducts, setSelectedProducts] = useState<Product[]>([]);
-    const [orderLocation, setOrderLocation] = useState<orderLocationData>();
+    const [orderLocation, setOrderLocation] = useState<OrderLocationData>();
     const totalPrice = selectedProducts.reduce((sum, item) => {
         return sum + item.price;
     }, 0);

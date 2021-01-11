@@ -1,4 +1,4 @@
-import { Product } from "./types";
+import { Product } from "../../service/types";
 
 export function checkIsSeleted(selectedProducts: Product[], product: Product) {
     return selectedProducts.some(item => item.id === product.id);

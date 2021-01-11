@@ -1,8 +1,7 @@
 import React from 'react';
+import { Product } from '../../service/types';
 import { formatPrice } from './helpers';
 //import { ReactComponent as Pizza } from '../../assets/pizza.svg';
-import { Product } from './types';
-
 
 interface ProductProps {
     product: Product;
